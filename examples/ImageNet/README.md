@@ -11,6 +11,33 @@ the ImageNet dataset.
   - Then, move and extract the training and validation images to labeled subfolders, using
     [this shell script](https://github.com/pytorch/examples/blob/main/imagenet/extract_ILSVRC.sh)
 
+## Install ImageNet dataset from kaggle
+
+```sh
+$ sudo apt install screen
+$ screen -S imagenetprep
+$ mkidr ${HOME}/dataset/kaggle
+$ julia -q
+julia> using PythonCall; kaggle = joinpath(dirname(PythonCall.C.CTX.exe_path), "kaggle")
+julia> run(`$(kaggle) competitions download -c imagenet-object-localization-challenge`)
+julia> exit()
+$ unzip imagenet-object-localization-challenge.zip
+$ ls
+ILSVRC                                     LOC_train_solution.csv
+LOC_sample_submission.csv                  LOC_val_solution.csv
+LOC_synset_mapping.txt                     imagenet-object-localization-challenge.zip
+$ cd ILSVRC/Data/CLS-LOC/
+$ ls
+test  train val
+$ cd val
+$ wget -qO- https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh | bash
+$ cd ${HOME}/dataset/kaggle/ILSVRC/Data/CLS-LOC/
+$ find train/ -name "*.JPEG" | wc -l
+1281167
+$ find val/ -name "*.JPEG" | wc -l
+50000
+```
+
 ## Training
 
 To train a model, run `main.jl` with the necessary parameters. See
