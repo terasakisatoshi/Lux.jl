@@ -5,7 +5,7 @@ using Augmentor, Configurations, Dates, FileIO, Functors, Images, MLUtils, OneHo
 import FLoops: ThreadedEx
 import Metalhead
 import MPI, NCCL
-using AMDGPU, LuxCUDA
+using LuxCUDA
 using Format
 
 # Distributed Training: NCCL for NVIDIA GPUs and MPI for anything else
@@ -36,8 +36,8 @@ function construct(rng::AbstractRNG, cfg::ModelConfig, ecfg::ExperimentConfig)
     ps, st = (ps, st) |> dev
 
     # Warmup for compilation
-    x__ = randn(rng, Float32, 224, 224, 3, 1) |> dev
-    y__ = onehotbatch([1], 1:1000) |> dev
+    x__ = randn(rng, Float32, 224, 224, 3, 2) |> dev
+    y__ = onehotbatch([2], 1:1000) |> dev
     should_log() && println("$(now()) ==> staring `$(cfg.arch)` warmup...")
     model(x__, ps, st)
     should_log() && println("$(now()) ==> forward pass warmup completed")

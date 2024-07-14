@@ -45,12 +45,12 @@ To train a model, run `main.jl` with the necessary parameters. See
 the model configuration.
 
 ```bash
-julia --project=examples/ImageNet -t auto examples/ImageNet/main.jl\
+julia --project -t auto main.jl \
   --cfg.dataset.data_root=~/dataset/kaggle/ILSVRC/Data/CLS-LOC \
   --cfg.dataset.train_batchsize=256 --cfg.dataset.eval_batchsize=256\
   --cfg.optimizer.learning_rate=0.5
 
-julia --project=examples/ImageNet -t auto examples/ImageNet/main.jl\
+julia --project -t auto main.jl \
   --cfg.model.name=alexnet --cfg.model.arch=alexnet\
   --cfg.dataset.data_root=~/dataset/kaggle/ILSVRC/Data/CLS-LOC \
   --cfg.dataset.train_batchsize=256 --cfg.dataset.eval_batchsize=256\
@@ -64,7 +64,7 @@ If your system has functional NCCL we will use it for all CUDA communications. O
 will use MPI for all communications.
 
 ```bash
-mpiexecjl -np 4 julia --project=examples/ImageNet -t auto examples/ImageNet/main.jl\
+mpiexecjl -np 4 julia --project -t auto main.jl \
   --cfg.dataset.data_root=~/dataset/kaggle/ILSVRC/Data/CLS-LOC \
   --cfg.dataset.train_batchsize=256 --cfg.dataset.eval_batchsize=256\
   --cfg.optimizer.learning_rate=0.01
