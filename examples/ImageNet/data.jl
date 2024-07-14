@@ -8,6 +8,7 @@ struct ImageDataset
 end
 
 function ImageDataset(folder::String, augmentation_pipeline, normalization_parameters)
+    folder = abspath(expanduser(folder))
     ulabels = readdir(folder)
     label_dirs = joinpath.((folder,), ulabels)
     @assert length(label_dirs)==1000 "There should be 1000 subdirectories in $folder"
