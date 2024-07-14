@@ -46,13 +46,13 @@ the model configuration.
 
 ```bash
 julia --project=examples/ImageNet -t auto examples/ImageNet/main.jl\
-  --cfg.dataset.data_root=/home/avik-pal/data/ImageNet/\
+  --cfg.dataset.data_root=~/dataset/kaggle/ILSVRC/Data/CLS-LOC \
   --cfg.dataset.train_batchsize=256 --cfg.dataset.eval_batchsize=256\
   --cfg.optimizer.learning_rate=0.5
 
 julia --project=examples/ImageNet -t auto examples/ImageNet/main.jl\
   --cfg.model.name=alexnet --cfg.model.arch=alexnet\
-  --cfg.dataset.data_root=/home/avik-pal/data/ImageNet/\
+  --cfg.dataset.data_root=~/dataset/kaggle/ILSVRC/Data/CLS-LOC \
   --cfg.dataset.train_batchsize=256 --cfg.dataset.eval_batchsize=256\
   --cfg.optimizer.learning_rate=0.01
 ```
@@ -65,7 +65,7 @@ will use MPI for all communications.
 
 ```bash
 mpiexecjl -np 4 julia --project=examples/ImageNet -t auto examples/ImageNet/main.jl\
-  --cfg.dataset.data_root=/home/avik-pal/data/ImageNet/\
+  --cfg.dataset.data_root=~/dataset/kaggle/ILSVRC/Data/CLS-LOC \
   --cfg.dataset.train_batchsize=256 --cfg.dataset.eval_batchsize=256\
   --cfg.optimizer.learning_rate=0.01
 ```
@@ -84,7 +84,7 @@ usage: main.jl [--cfg.seed CFG.SEED] [--cfg.model.name CFG.MODEL.NAME]
                [--cfg.optimizer.scheduler.name CFG.OPTIMIZER.SCHEDULER.NAME]
                [--cfg.optimizer.scheduler.cycle_length CFG.OPTIMIZER.SCHEDULER.CYCLE_LENGTH]
                [--cfg.optimizer.scheduler.damp_factor CFG.OPTIMIZER.SCHEDULER.DAMP_FACTOR]
-               [--cfg.optimizer.scheduler.lr_step CFG.OPTIMIZER.SCHEDULER.LR_STEP]                                                                             
+               [--cfg.optimizer.scheduler.lr_step CFG.OPTIMIZER.SCHEDULER.LR_STEP]
                [--cfg.optimizer.scheduler.lr_step_decay CFG.OPTIMIZER.SCHEDULER.LR_STEP_DECAY]
                [--cfg.train.total_steps CFG.TRAIN.TOTAL_STEPS]
                [--cfg.train.evaluate_every CFG.TRAIN.EVALUATE_EVERY]
@@ -97,7 +97,7 @@ usage: main.jl [--cfg.seed CFG.SEED] [--cfg.model.name CFG.MODEL.NAME]
                [--cfg.train.print_frequency CFG.TRAIN.PRINT_FREQUENCY]
                [--cfg.dataset.data_root CFG.DATASET.DATA_ROOT]
                [--cfg.dataset.eval_batchsize CFG.DATASET.EVAL_BATCHSIZE]
-               [--cfg.dataset.train_batchsize CFG.DATASET.TRAIN_BATCHSIZE]                                                                                     
+               [--cfg.dataset.train_batchsize CFG.DATASET.TRAIN_BATCHSIZE]
                [-h]
 
 optional arguments:
