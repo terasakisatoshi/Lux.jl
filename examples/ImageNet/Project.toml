@@ -1,5 +1,4 @@
 [deps]
-AMDGPU = "21141c5a-9bdb-4563-92ae-f87d6854732e"
 Augmentor = "02898b10-1f73-11ea-317c-6393d7073e15"
 Boltz = "4544d5e4-abc5-4dea-817f-29e4c205d9c8"
 Configurations = "5218b696-f38b-4ac9-8b61-a12ec717816d"
